@@ -60,7 +60,10 @@ export class AppComponent {
   public mutateCartItem(): void {
     this.cartItemSig.mutate((cartItem) => {
       if (cartItem) {
-        cartItem.quantity = 10;
+        let min = Math.ceil(0);
+        let max = Math.floor(255);
+
+        cartItem.quantity = Math.floor(Math.random() * (max - min + 1)) + min;;
       }
     });
   }
@@ -80,6 +83,7 @@ export class AppComponent {
 
   // Destroy the side effect
   public destroyEffect(): void {
+    debugger;
     this.effectSig?.destroy();
   }
 }
